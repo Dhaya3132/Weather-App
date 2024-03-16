@@ -1,20 +1,39 @@
 const form_value = document.querySelector('form');
+const details = document.querySelector('.details');
 
-async function updatecity(city)
-{
-  const updatedcity = await getcity(city);
-  const updatedcityweather = await getweather(updatedcity.Key);
+function updateUI(data) {
+    const city = data.citydetails;
+    const weather = data.cityweather;
 
-  return{
-    citydetails : updatedcity,
-    cityweather : updatedcityweather
-  }
+    details.innerHTML = `
+    <h3>${city.EnglishName}</h3>
+    <h6>${weather.WeatherText}</h6>
+    <div>
+        <span>
+            ${weather.Temperature.Metric.Value}
+        </span>
+        <span>&deg;C</span>
+    </div>
+`
+
 }
 
-form_value.addEventListener('submit',(e)=>{
-   e.preventDefault();
+async function updatecity(city) {
+    const updatedcity = await getcity(city);
+    const updatedcityweather = await getweather(updatedcity.Key);
 
-   const city = form_value.weather.value.trim();
-   form_value.reset();
-   updatecity(city).then( (data)=> console.log(data)).catch( (err)=> console.log(err));
+    return {
+        citydetails: updatedcity,
+        cityweather: updatedcityweather
+    }
+}
+
+form_value.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const city = form_value.weather.value.trim();
+    form_value.reset();
+    updatecity(city)
+    .then(data => updateUI(data))
+    .catch((err) => console.log(err));
 });
