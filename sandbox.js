@@ -5,6 +5,8 @@ function updateUI(data) {
     const city = data.citydetails;
     const weather = data.cityweather;
 
+    // const {city, weather} = data;
+
     details.innerHTML = `
     <h3>${city.EnglishName}</h3>
     <h6>${weather.WeatherText}</h6>
