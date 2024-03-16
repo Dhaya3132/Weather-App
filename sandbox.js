@@ -1,5 +1,6 @@
 const form_value = document.querySelector('form');
 const details = document.querySelector('.details');
+// const images = document.querySelector('.images');
 
 function updateUI(data) {
     const city = data.citydetails;
@@ -18,6 +19,8 @@ function updateUI(data) {
     </div>
 `
 
+//    let timeurl = weather.IsDayTime ? '/img/day.jpg' : '/img/night.jpg' ;
+//    images.setAttribute('src', timeurl);
 }
 
 async function updatecity(city) {
@@ -39,3 +42,4 @@ form_value.addEventListener('submit', (e) => {
     .then(data => updateUI(data))
     .catch((err) => console.log(err));
 });
+

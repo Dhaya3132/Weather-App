@@ -35,3 +35,11 @@ body{
     font-size: 35px;
     margin: 5px auto;
 }
+
+.images{
+    width:370px;
+    height: 350px;
+    border-radius: 30px;
+
+}
+
