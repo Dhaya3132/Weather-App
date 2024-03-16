@@ -1,13 +1,13 @@
 const key = 'BA2Cjs1KemIJGO1xsMToyuw0MogNkGRy';
 
 
-async function getweather(id)
+async function getweather(citykey)
 {
     const refereceWeatherUrl = 'http://dataservice.accuweather.com/currentconditions/v1/';
-    const weatherapikey = `${id}?apikey=${key}`;
+    const weatherapikey = `${citykey}?apikey=${key}`;
 
     const weatherdata = await fetch(refereceWeatherUrl+weatherapikey);
-    const weatherresponse = weatherdata.json();
+    const weatherresponse = await weatherdata.json();
 
     return weatherresponse[0];
 }

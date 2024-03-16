@@ -3,7 +3,7 @@ const form_value = document.querySelector('form');
 async function updatecity(city)
 {
   const updatedcity = await getcity(city);
-  const updatedcityweather = await getweather(updatedcity.key);
+  const updatedcityweather = await getweather(updatedcity.Key);
 
   return{
     citydetails : updatedcity,
