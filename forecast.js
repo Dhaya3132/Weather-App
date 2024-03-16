@@ -1,7 +1,7 @@
 const key = 'BA2Cjs1KemIJGO1xsMToyuw0MogNkGRy';
 
 
-async function getweather()
+async function getweather(id)
 {
     const refereceWeatherUrl = 'http://dataservice.accuweather.com/currentconditions/v1/';
     const weatherapikey = `${id}?apikey=${key}`;
@@ -9,11 +9,11 @@ async function getweather()
     const weatherdata = await fetch(refereceWeatherUrl+weatherapikey);
     const weatherresponse = weatherdata.json();
 
-    return weatherresponse;
+    return weatherresponse[0];
 }
 
 
-async function getcity()
+async function getcity(city)
 {
     const referenceurl = 'http://dataservice.accuweather.com/locations/v1/cities/search';
     const apiKey = `?apikey=${key}&q=${city}`;
