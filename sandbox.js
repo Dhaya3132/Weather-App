@@ -2,7 +2,8 @@ const form_value = document.querySelector('form');
 
 async function updatecity(city)
 {
-
+  const updatedcity = await getcity(city);
+  const updatedcityweather = await getweather(city.key);
 }
 
 form_value.addEventListener('submit',(e)=>{

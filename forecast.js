@@ -1,6 +1,4 @@
 const key = 'BA2Cjs1KemIJGO1xsMToyuw0MogNkGRy';
-const city = 'London';
-const id = 328328;
 
 
 async function getweather()
@@ -26,6 +24,6 @@ async function getcity()
     return response[0];
 }
 
-getcity().then(data => console.log(data)).catch(err => console.log(err));
+// getcity().then(data => console.log(data)).catch(err => console.log(err));
 
-getweather().then(data=> console.log(data)).catch(err=> console.log(err));
+// getweather().then(data=> console.log(data)).catch(err=> console.log(err));
