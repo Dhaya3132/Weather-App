@@ -1,6 +1,7 @@
 const form_value = document.querySelector('form');
 const details = document.querySelector('.details');
 // const images = document.querySelector('.images');
+const Forecast = new forecast();
 
 function updateUI(data) {
     const city = data.citydetails;
@@ -23,22 +24,12 @@ function updateUI(data) {
 //    images.setAttribute('src', timeurl);
 }
 
-async function updatecity(city) {
-    const updatedcity = await getcity(city);
-    const updatedcityweather = await getweather(updatedcity.Key);
-
-    return {
-        citydetails: updatedcity,
-        cityweather: updatedcityweather
-    }
-}
-
 form_value.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const city = form_value.weather.value.trim();
     form_value.reset();
-    updatecity(city)
+    Forecast.updatecity(city)
     .then(data => updateUI(data))
     .catch((err) => console.log(err));
 
@@ -49,7 +40,7 @@ form_value.addEventListener('submit', (e) => {
 
 if(localStorage.getItem('city'))
 {
-    updatecity(localStorage.getItem('city'))
+    Forecast.updatecity(localStorage.getItem('city'))
     .then((data)=> updateUI(data))
     .catch((err)=> console.log(err));
 }
